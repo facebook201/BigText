@@ -79,8 +79,6 @@ module.exports = {
     title: '前端图形技术',
     port: 8002,
     themeConfig: {
-        repo: 'https://github.com/tangjie-93/blog',
-        repoLabel: 'GitHub',
         nav: [
             {
                 text: '图形学',
