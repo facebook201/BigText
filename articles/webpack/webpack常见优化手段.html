@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack常见优化手段 | 前端WebGL</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.3b23bb34.css" as="style"><link rel="preload" href="/blog/assets/js/app.cc3037ec.js" as="script"><link rel="preload" href="/blog/assets/js/2.918eef7d.js" as="script"><link rel="preload" href="/blog/assets/js/1.dd66940c.js" as="script"><link rel="preload" href="/blog/assets/js/253.ff32fe13.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.6453242c.js"><link rel="prefetch" href="/blog/assets/js/100.e56f3d4b.js"><link rel="prefetch" href="/blog/assets/js/101.11a32ed7.js"><link rel="prefetch" href="/blog/assets/js/102.31b9b62d.js"><link rel="prefetch" href="/blog/assets/js/103.a618ed3a.js"><link rel="prefetch" href="/blog/assets/js/104.9d42920c.js"><link rel="prefetch" href="/blog/assets/js/105.90d79e64.js"><link rel="prefetch" href="/blog/assets/js/106.5601a757.js"><link rel="prefetch" href="/blog/assets/js/107.9628605d.js"><link rel="prefetch" href="/blog/assets/js/108.b193a4ac.js"><link rel="prefetch" href="/blog/assets/js/109.3303cb7b.js"><link rel="prefetch" href="/blog/assets/js/11.08701c0e.js"><link rel="prefetch" href="/blog/assets/js/110.6089abf2.js"><link rel="prefetch" href="/blog/assets/js/111.0a7528f5.js"><link rel="prefetch" href="/blog/assets/js/112.57e4b5b3.js"><link rel="prefetch" href="/blog/assets/js/113.7bfdbc1a.js"><link rel="prefetch" href="/blog/assets/js/114.d333e2d0.js"><link rel="prefetch" href="/blog/assets/js/115.0973b0d5.js"><link rel="prefetch" href="/blog/assets/js/116.a1ba085a.js"><link rel="prefetch" href="/blog/assets/js/117.82a5557c.js"><link rel="prefetch" href="/blog/assets/js/118.56fde63f.js"><link rel="prefetch" href="/blog/assets/js/119.5bc218f8.js"><link rel="prefetch" href="/blog/assets/js/12.a6781cb2.js"><link rel="prefetch" href="/blog/assets/js/120.91c31cb1.js"><link rel="prefetch" href="/blog/assets/js/121.aabb64fb.js"><link rel="prefetch" href="/blog/assets/js/122.e6d658e0.js"><link rel="prefetch" href="/blog/assets/js/123.f77060d1.js"><link rel="prefetch" href="/blog/assets/js/124.6443d972.js"><link rel="prefetch" href="/blog/assets/js/125.fdba328e.js"><link rel="prefetch" href="/blog/assets/js/126.177144f0.js"><link rel="prefetch" href="/blog/assets/js/127.f6d59d43.js"><link rel="prefetch" href="/blog/assets/js/128.6ecab9e1.js"><link rel="prefetch" href="/blog/assets/js/129.ace967e4.js"><link rel="prefetch" href="/blog/assets/js/13.e0daf978.js"><link rel="prefetch" href="/blog/assets/js/130.4ba0fc24.js"><link rel="prefetch" href="/blog/assets/js/131.18ad428f.js"><link rel="prefetch" href="/blog/assets/js/132.6de70f31.js"><link rel="prefetch" href="/blog/assets/js/133.2c554e19.js"><link rel="prefetch" href="/blog/assets/js/134.641f862f.js"><link rel="prefetch" href="/blog/assets/js/135.d3ac6b54.js"><link rel="prefetch" href="/blog/assets/js/136.38cbd2d5.js"><link rel="prefetch" href="/blog/assets/js/137.2d816f5d.js"><link rel="prefetch" href="/blog/assets/js/138.2ded09ab.js"><link rel="prefetch" href="/blog/assets/js/139.7a498eab.js"><link rel="prefetch" href="/blog/assets/js/14.8f90954a.js"><link rel="prefetch" href="/blog/assets/js/140.87a17f7c.js"><link rel="prefetch" href="/blog/assets/js/141.8e389061.js"><link rel="prefetch" href="/blog/assets/js/142.a2539e36.js"><link rel="prefetch" href="/blog/assets/js/143.cce2facb.js"><link rel="prefetch" href="/blog/assets/js/144.499084a9.js"><link rel="prefetch" href="/blog/assets/js/145.d78d73b3.js"><link rel="prefetch" href="/blog/assets/js/146.1bd86ed8.js"><link rel="prefetch" href="/blog/assets/js/147.a40db09a.js"><link rel="prefetch" href="/blog/assets/js/148.0bee9963.js"><link rel="prefetch" href="/blog/assets/js/149.36cae260.js"><link rel="prefetch" href="/blog/assets/js/15.0382753a.js"><link rel="prefetch" href="/blog/assets/js/150.0a5f2e96.js"><link rel="prefetch" href="/blog/assets/js/151.04077552.js"><link rel="prefetch" href="/blog/assets/js/152.00161169.js"><link rel="prefetch" href="/blog/assets/js/153.4be9c720.js"><link rel="prefetch" href="/blog/assets/js/154.550525cd.js"><link rel="prefetch" href="/blog/assets/js/155.1df5780e.js"><link rel="prefetch" href="/blog/assets/js/156.b09cccc6.js"><link rel="prefetch" href="/blog/assets/js/157.2f88c2f7.js"><link rel="prefetch" href="/blog/assets/js/158.3b35883a.js"><link rel="prefetch" href="/blog/assets/js/159.de288906.js"><link rel="prefetch" href="/blog/assets/js/16.4069cf12.js"><link rel="prefetch" href="/blog/assets/js/160.e7f234cc.js"><link rel="prefetch" href="/blog/assets/js/161.bca72816.js"><link rel="prefetch" href="/blog/assets/js/162.d8d3eed1.js"><link rel="prefetch" href="/blog/assets/js/163.a1bca143.js"><link rel="prefetch" href="/blog/assets/js/164.ff04abf6.js"><link rel="prefetch" href="/blog/assets/js/165.d3847fc8.js"><link rel="prefetch" href="/blog/assets/js/166.24244820.js"><link rel="prefetch" href="/blog/assets/js/167.cd80c500.js"><link rel="prefetch" href="/blog/assets/js/168.c29d9d1e.js"><link rel="prefetch" href="/blog/assets/js/169.a3a8cc06.js"><link rel="prefetch" href="/blog/assets/js/17.79bd023c.js"><link rel="prefetch" href="/blog/assets/js/170.08cf1ef4.js"><link rel="prefetch" href="/blog/assets/js/171.63c3135c.js"><link rel="prefetch" href="/blog/assets/js/172.82b1bce8.js"><link rel="prefetch" href="/blog/assets/js/173.71cd38d6.js"><link rel="prefetch" href="/blog/assets/js/174.b9ea578c.js"><link rel="prefetch" href="/blog/assets/js/175.370c4bd0.js"><link rel="prefetch" href="/blog/assets/js/176.b14d6831.js"><link rel="prefetch" href="/blog/assets/js/177.0352635e.js"><link rel="prefetch" href="/blog/assets/js/178.3cdb1800.js"><link rel="prefetch" href="/blog/assets/js/179.9b8c1733.js"><link rel="prefetch" href="/blog/assets/js/18.019a7c67.js"><link rel="prefetch" href="/blog/assets/js/180.ab553d9e.js"><link rel="prefetch" href="/blog/assets/js/181.4ca9ae6f.js"><link rel="prefetch" href="/blog/assets/js/182.5b8c95b5.js"><link rel="prefetch" href="/blog/assets/js/183.fbf20d93.js"><link rel="prefetch" href="/blog/assets/js/184.bae10e54.js"><link rel="prefetch" href="/blog/assets/js/185.d3dc237f.js"><link rel="prefetch" href="/blog/assets/js/186.9f341504.js"><link rel="prefetch" href="/blog/assets/js/187.80e71c52.js"><link rel="prefetch" href="/blog/assets/js/188.1530f52d.js"><link rel="prefetch" href="/blog/assets/js/189.fe92e468.js"><link rel="prefetch" href="/blog/assets/js/19.7c15232c.js"><link rel="prefetch" href="/blog/assets/js/190.6c2b8606.js"><link rel="prefetch" href="/blog/assets/js/191.d982f777.js"><link rel="prefetch" href="/blog/assets/js/192.a9fd1fa8.js"><link rel="prefetch" href="/blog/assets/js/193.b57cf720.js"><link rel="prefetch" href="/blog/assets/js/194.8290160e.js"><link rel="prefetch" href="/blog/assets/js/195.48b0c331.js"><link rel="prefetch" href="/blog/assets/js/196.8b4f8598.js"><link rel="prefetch" href="/blog/assets/js/197.c6674dc8.js"><link rel="prefetch" href="/blog/assets/js/198.898105ea.js"><link rel="prefetch" href="/blog/assets/js/199.20a695b6.js"><link rel="prefetch" href="/blog/assets/js/20.becddea5.js"><link rel="prefetch" href="/blog/assets/js/200.3a276c3c.js"><link rel="prefetch" href="/blog/assets/js/201.ebe7ef57.js"><link rel="prefetch" href="/blog/assets/js/202.ef56e8b8.js"><link rel="prefetch" href="/blog/assets/js/203.a859f5f4.js"><link rel="prefetch" href="/blog/assets/js/204.521014d1.js"><link rel="prefetch" href="/blog/assets/js/205.65f93b9e.js"><link rel="prefetch" href="/blog/assets/js/206.30550734.js"><link rel="prefetch" href="/blog/assets/js/207.ba12be14.js"><link rel="prefetch" href="/blog/assets/js/208.cd4b31f0.js"><link rel="prefetch" href="/blog/assets/js/209.5a0e2a72.js"><link rel="prefetch" href="/blog/assets/js/21.2abc4662.js"><link rel="prefetch" href="/blog/assets/js/210.aade8a85.js"><link rel="prefetch" href="/blog/assets/js/211.4e7947bc.js"><link rel="prefetch" href="/blog/assets/js/212.13611c18.js"><link rel="prefetch" href="/blog/assets/js/213.d441e126.js"><link rel="prefetch" href="/blog/assets/js/214.d3bbee16.js"><link rel="prefetch" href="/blog/assets/js/215.0d3767e7.js"><link rel="prefetch" href="/blog/assets/js/216.446b2a83.js"><link rel="prefetch" href="/blog/assets/js/217.4702fdea.js"><link rel="prefetch" href="/blog/assets/js/218.555b4d64.js"><link rel="prefetch" href="/blog/assets/js/219.188b76ba.js"><link rel="prefetch" href="/blog/assets/js/22.4c778411.js"><link rel="prefetch" href="/blog/assets/js/220.ebcde46f.js"><link rel="prefetch" href="/blog/assets/js/221.b93a679f.js"><link rel="prefetch" href="/blog/assets/js/222.3c8e2f17.js"><link rel="prefetch" href="/blog/assets/js/223.e286d530.js"><link rel="prefetch" href="/blog/assets/js/224.402e47ee.js"><link rel="prefetch" href="/blog/assets/js/225.7de33b3e.js"><link rel="prefetch" href="/blog/assets/js/226.6bc2603d.js"><link rel="prefetch" href="/blog/assets/js/227.9c14cf2b.js"><link rel="prefetch" href="/blog/assets/js/228.ebfd1bbd.js"><link rel="prefetch" href="/blog/assets/js/229.794e50e0.js"><link rel="prefetch" href="/blog/assets/js/23.3adf2e7b.js"><link rel="prefetch" href="/blog/assets/js/230.e224cdfc.js"><link rel="prefetch" href="/blog/assets/js/231.cf4bd793.js"><link rel="prefetch" href="/blog/assets/js/232.4963c527.js"><link rel="prefetch" href="/blog/assets/js/233.3742c18e.js"><link rel="prefetch" href="/blog/assets/js/234.f6f02f99.js"><link rel="prefetch" href="/blog/assets/js/235.879bddf3.js"><link rel="prefetch" href="/blog/assets/js/236.7a243bc2.js"><link rel="prefetch" href="/blog/assets/js/237.f098433f.js"><link rel="prefetch" href="/blog/assets/js/238.a34d9086.js"><link rel="prefetch" href="/blog/assets/js/239.b753ca30.js"><link rel="prefetch" href="/blog/assets/js/24.33be9616.js"><link rel="prefetch" href="/blog/assets/js/240.08f3a81e.js"><link rel="prefetch" href="/blog/assets/js/241.822c23a9.js"><link rel="prefetch" href="/blog/assets/js/242.abc62596.js"><link rel="prefetch" href="/blog/assets/js/243.6ceb7603.js"><link rel="prefetch" href="/blog/assets/js/244.9b38110b.js"><link rel="prefetch" href="/blog/assets/js/245.5ce12f04.js"><link rel="prefetch" href="/blog/assets/js/246.6349dd16.js"><link rel="prefetch" href="/blog/assets/js/247.75457cb2.js"><link rel="prefetch" href="/blog/assets/js/248.8704a9bc.js"><link rel="prefetch" href="/blog/assets/js/249.69874bf9.js"><link rel="prefetch" href="/blog/assets/js/25.0877e4ef.js"><link rel="prefetch" href="/blog/assets/js/250.499b6d2b.js"><link rel="prefetch" href="/blog/assets/js/251.d6cdcca1.js"><link rel="prefetch" href="/blog/assets/js/252.b234b9dd.js"><link rel="prefetch" href="/blog/assets/js/254.c4bd6fee.js"><link rel="prefetch" href="/blog/assets/js/255.e971ca96.js"><link rel="prefetch" href="/blog/assets/js/256.f2261424.js"><link rel="prefetch" href="/blog/assets/js/257.9f97bfde.js"><link rel="prefetch" href="/blog/assets/js/258.12589bdf.js"><link rel="prefetch" href="/blog/assets/js/259.5e8d7f09.js"><link rel="prefetch" href="/blog/assets/js/26.0284307b.js"><link rel="prefetch" href="/blog/assets/js/260.bb25a24c.js"><link rel="prefetch" href="/blog/assets/js/261.2af3b275.js"><link rel="prefetch" href="/blog/assets/js/262.81139fd9.js"><link rel="prefetch" href="/blog/assets/js/263.10339da2.js"><link rel="prefetch" href="/blog/assets/js/264.52525e48.js"><link rel="prefetch" href="/blog/assets/js/265.036afaa7.js"><link rel="prefetch" href="/blog/assets/js/266.0880b02e.js"><link rel="prefetch" href="/blog/assets/js/267.bb19f83d.js"><link rel="prefetch" href="/blog/assets/js/268.b81c5554.js"><link rel="prefetch" href="/blog/assets/js/269.58119514.js"><link rel="prefetch" href="/blog/assets/js/27.7cf8264e.js"><link rel="prefetch" href="/blog/assets/js/270.67488264.js"><link rel="prefetch" href="/blog/assets/js/271.48cf3e3c.js"><link rel="prefetch" href="/blog/assets/js/272.02fe0ae4.js"><link rel="prefetch" href="/blog/assets/js/273.3746215f.js"><link rel="prefetch" href="/blog/assets/js/274.d72924ae.js"><link rel="prefetch" href="/blog/assets/js/275.75224fc7.js"><link rel="prefetch" href="/blog/assets/js/276.3f3ddaa2.js"><link rel="prefetch" href="/blog/assets/js/277.0ea0d1af.js"><link rel="prefetch" href="/blog/assets/js/28.b8e6d6c7.js"><link rel="prefetch" href="/blog/assets/js/29.067316a4.js"><link rel="prefetch" href="/blog/assets/js/3.078209c2.js"><link rel="prefetch" href="/blog/assets/js/30.159abf4f.js"><link rel="prefetch" href="/blog/assets/js/31.d922fcf9.js"><link rel="prefetch" href="/blog/assets/js/32.f9c7ca4c.js"><link rel="prefetch" href="/blog/assets/js/33.bdad240e.js"><link rel="prefetch" href="/blog/assets/js/34.f2bbc2d1.js"><link rel="prefetch" href="/blog/assets/js/35.bc2c25c1.js"><link rel="prefetch" href="/blog/assets/js/36.01853d6b.js"><link rel="prefetch" href="/blog/assets/js/37.8fc3cb59.js"><link rel="prefetch" href="/blog/assets/js/38.8afeb2de.js"><link rel="prefetch" href="/blog/assets/js/39.cfdb7b3e.js"><link rel="prefetch" href="/blog/assets/js/4.8fe7a186.js"><link rel="prefetch" href="/blog/assets/js/40.19c78f35.js"><link rel="prefetch" href="/blog/assets/js/41.54cd742c.js"><link rel="prefetch" href="/blog/assets/js/42.5b417e50.js"><link rel="prefetch" href="/blog/assets/js/43.f03b86b8.js"><link rel="prefetch" href="/blog/assets/js/44.b7113dba.js"><link rel="prefetch" href="/blog/assets/js/45.3fdc56bd.js"><link rel="prefetch" href="/blog/assets/js/46.a90ddf9f.js"><link rel="prefetch" href="/blog/assets/js/47.e1c53a3e.js"><link rel="prefetch" href="/blog/assets/js/48.647bfea7.js"><link rel="prefetch" href="/blog/assets/js/49.96a3c8bc.js"><link rel="prefetch" href="/blog/assets/js/5.5967bee8.js"><link rel="prefetch" href="/blog/assets/js/50.26f0357e.js"><link rel="prefetch" href="/blog/assets/js/51.da90b3f8.js"><link rel="prefetch" href="/blog/assets/js/52.5882479e.js"><link rel="prefetch" href="/blog/assets/js/53.3713556c.js"><link rel="prefetch" href="/blog/assets/js/54.101160d6.js"><link rel="prefetch" href="/blog/assets/js/55.54118f32.js"><link rel="prefetch" href="/blog/assets/js/56.d2fa3572.js"><link rel="prefetch" href="/blog/assets/js/57.7725704f.js"><link rel="prefetch" href="/blog/assets/js/58.c033cc7f.js"><link rel="prefetch" href="/blog/assets/js/59.b7daeca5.js"><link rel="prefetch" href="/blog/assets/js/6.17dcb484.js"><link rel="prefetch" href="/blog/assets/js/60.d9d701aa.js"><link rel="prefetch" href="/blog/assets/js/61.2fa38130.js"><link rel="prefetch" href="/blog/assets/js/62.47dfde10.js"><link rel="prefetch" href="/blog/assets/js/63.a5c3c884.js"><link rel="prefetch" href="/blog/assets/js/64.8e4cdd51.js"><link rel="prefetch" href="/blog/assets/js/65.5a88727c.js"><link rel="prefetch" href="/blog/assets/js/66.5408ab41.js"><link rel="prefetch" href="/blog/assets/js/67.d01a2247.js"><link rel="prefetch" href="/blog/assets/js/68.221079cf.js"><link rel="prefetch" href="/blog/assets/js/69.5e64e3f0.js"><link rel="prefetch" href="/blog/assets/js/7.28c1da78.js"><link rel="prefetch" href="/blog/assets/js/70.1879d3dd.js"><link rel="prefetch" href="/blog/assets/js/71.eddb25f1.js"><link rel="prefetch" href="/blog/assets/js/72.37939565.js"><link rel="prefetch" href="/blog/assets/js/73.b892ade0.js"><link rel="prefetch" href="/blog/assets/js/74.bf1943d7.js"><link rel="prefetch" href="/blog/assets/js/75.04505cda.js"><link rel="prefetch" href="/blog/assets/js/76.83fd9cc3.js"><link rel="prefetch" href="/blog/assets/js/77.85cc78f2.js"><link rel="prefetch" href="/blog/assets/js/78.0374c2f3.js"><link rel="prefetch" href="/blog/assets/js/79.870e06b7.js"><link rel="prefetch" href="/blog/assets/js/80.b4d0f546.js"><link rel="prefetch" href="/blog/assets/js/81.6ccabcda.js"><link rel="prefetch" href="/blog/assets/js/82.b0eb7a5c.js"><link rel="prefetch" href="/blog/assets/js/83.98170b69.js"><link rel="prefetch" href="/blog/assets/js/84.21ce5c07.js"><link rel="prefetch" href="/blog/assets/js/85.aa0d4a14.js"><link rel="prefetch" href="/blog/assets/js/86.bd98fe6d.js"><link rel="prefetch" href="/blog/assets/js/87.ff3adcc3.js"><link rel="prefetch" href="/blog/assets/js/88.63f50c78.js"><link rel="prefetch" href="/blog/assets/js/89.77ed0897.js"><link rel="prefetch" href="/blog/assets/js/90.ef85ae84.js"><link rel="prefetch" href="/blog/assets/js/91.c1f0345a.js"><link rel="prefetch" href="/blog/assets/js/92.a285556a.js"><link rel="prefetch" href="/blog/assets/js/93.fd3a77d4.js"><link rel="prefetch" href="/blog/assets/js/94.c8527a0b.js"><link rel="prefetch" href="/blog/assets/js/95.f679cc1f.js"><link rel="prefetch" href="/blog/assets/js/96.f8bcd9cf.js"><link rel="prefetch" href="/blog/assets/js/97.3bd51540.js"><link rel="prefetch" href="/blog/assets/js/98.c69ee606.js"><link rel="prefetch" href="/blog/assets/js/99.235adf16.js"><link rel="prefetch" href="/blog/assets/js/vendors~docsearch.34249538.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.3b23bb34.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">前端WebGL</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/articles/webgl/" class="nav-link">
+  图形学
+</a></div><div class="nav-item"><a href="/blog/articles/threejs/" class="nav-link">
+  threejs
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/articles/webgl/" class="nav-link">
+  图形学
+</a></div><div class="nav-item"><a href="/blog/articles/threejs/" class="nav-link">
+  threejs
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/blog/articles/webpack/" aria-current="page" class="sidebar-link">webpack基础知识点总结</a></li><li><a href="/blog/articles/webpack/webpack工作流程总结.html" class="sidebar-link">webpack工作流程总结</a></li><li><a href="/blog/articles/webpack/webpack常见优化手段.html" class="active sidebar-link">webpack常见优化手段</a></li><li><a href="/blog/articles/webpack/webpack的Loader机制.html" class="sidebar-link">webpack的Loader机制</a></li><li><a href="/blog/articles/webpack/webpack解决了什么问题？.html" class="sidebar-link">webpack解决了什么问题？</a></li><li><a href="/blog/articles/webpack/常见打包工具的对比.html" class="sidebar-link">常见打包工具的对比</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><image src="../../images/webpack优化.png" alt="暂无图片">
+### 4、常见优化手段
+**4.1 开发环境下的优化**
++ 1、优化构建速度
+<p>   1)、缩小文件搜索范围(主要是对配置项中的module和resolve配置项进行优化)</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token comment">//1、优化module配置项中的查找范围</span>
+        <span class="token literal-property property">module</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token comment">//1、忽略对部分没采用模块化的文件的递归解析处理，这样做的好处是能提高构建性能。</span>
+            <span class="token literal-property property">noParse</span><span class="token operator">:</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">jQuery|ChartJS</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+            <span class="token literal-property property">rules</span><span class="token operator">:</span><span class="token punctuation">[</span>
+                <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+                <span class="token literal-property property">use</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">&quot;babel-loader&quot;</span><span class="token punctuation">]</span>
+                <span class="token literal-property property">include</span><span class="token operator">:</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'src'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token comment">//2、缩小搜索范围</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token comment">//2、缩小resolve模块搜索范围</span>
+        <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 1、使用绝对路径指明第三方模块存放的位置，以减少搜索步骤</span>
+            <span class="token comment">// 其中 __dirname 表示当前工作目录，也就是项目根目录</span>
+            <span class="token literal-property property">modules</span><span class="token operator">:</span> <span class="token punctuation">[</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'node_modules'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token comment">//2、在明确第三方模块的入口文件描述字段时。可以只采用 main（单个字段） 字段作为入口文件描述字段，以减少搜索步骤。</span>
+            <span class="token literal-property property">mainFields</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'main'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">alias</span><span class="token operator">:</span><span class="token punctuation">{</span>
+                <span class="token string-property property">&quot;@&quot;</span><span class="token operator">:</span><span class="token string">&quot;./src&quot;</span><span class="token punctuation">,</span><span class="token comment">//3、通过配置别名来跳过耗时的递归解析操作。</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">//4、这个列表越长，或者正确的后缀在越后面，就会造成尝试的次数越多</span>
+            <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.json'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+        
+    <span class="token punctuation">}</span>
+</code></pre></div><p>   2)、使用动态链接库（DllPlugin）</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token comment">//新建一个dll.config.js文件,跟平常的配置文件一样</span>
+    <span class="token keyword">const</span> DllPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack/lib/DllPlugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    module<span class="token punctuation">.</span>export<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">entry</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">vender</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">&quot;vue&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;axios&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;vue-router&quot;</span><span class="token punctuation">,</span><span class="token string">&quot;vuex&quot;</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">output</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">path</span><span class="token operator">:</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span><span class="token string">&quot;../src/static&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">filename</span><span class="token operator">:</span><span class="token string">&quot;[name].js&quot;</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">library</span><span class="token operator">:</span><span class="token string">&quot;[name]_library&quot;</span>
+        <span class="token punctuation">}</span>
+        <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token comment">// 接入 DllPlugin</span>
+            <span class="token keyword">new</span> <span class="token class-name">DllPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              <span class="token comment">// 动态链接库的全局变量名称，需要和 output.library 中保持一致</span>
+              <span class="token comment">// 该字段的值也就是输出的 manifest.json 文件 中 name 字段的值</span>
+              <span class="token comment">// 例如 react.manifest.json 中就有 &quot;name&quot;: &quot;_dll_react&quot;</span>
+              <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'_dll_[name]'</span><span class="token punctuation">,</span>
+              <span class="token comment">// 描述动态链接库的 manifest.json 文件输出时的文件名称</span>
+              <span class="token literal-property property">path</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">,</span> <span class="token string">'[name].manifest.json'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//在开发或生产环境配置文件中</span>
+    <span class="token keyword">const</span> DllReferencePlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack/lib/DllReferencePlugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+        <span class="token literal-property property">plugins</span><span class="token operator">:</span><span class="token punctuation">[</span>
+            <span class="token keyword">new</span> <span class="token class-name">DllReferencePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              <span class="token comment">// 描述 react 动态链接库的文件内容</span>
+              <span class="token literal-property property">manifest</span><span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./dist/vender.manifest.json'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>   3)、使用HappyPack（并行loader去转换代码）</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token comment">//它把任务分解给多个子进程去并发的执行，子进程处理完后再把结果发送给主进程。</span>
+    <span class="token keyword">const</span> HappyPack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'happypack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">module</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">rules</span><span class="token operator">:</span><span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+                    <span class="token comment">// 把对 .js 文件的处理转交给 id 为 babel 的 HappyPack 实例</span>
+                    <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'happypack/loader?id=babel'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token comment">// 排除 node_modules 目录下的文件，node_modules 目录下的文件都是采用的 ES5 语法，没必要再通过 Babel 去转换</span>
+                    <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+                     <span class="token comment">// 把对 .css 文件的处理转交给 id 为 css 的 HappyPack 实例</span>
+                    <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+                    <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'happypack/loader?id=css'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">plugins</span><span class="token operator">:</span><span class="token punctuation">[</span>
+            <span class="token keyword">new</span> <span class="token class-name">HappyPack</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <span class="token comment">// 用唯一的标识符 id 来代表当前的 HappyPack 是用来处理一类特定的文件</span>
+                <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">'babel'</span><span class="token punctuation">,</span>
+                <span class="token comment">// 如何处理 .js 文件，用法和 Loader 配置中一样</span>
+                <span class="token literal-property property">loaders</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'babel-loader?cacheDirectory'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token comment">// ... 其它配置项</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token keyword">new</span> <span class="token class-name">HappyPack</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                <span class="token comment">// 用唯一的标识符 id 来代表当前的 HappyPack 是用来处理一类特定的文件</span>
+                <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">'css'</span><span class="token punctuation">,</span>
+                <span class="token comment">// 如何处理 .js 文件，用法和 Loader 配置中一样</span>
+                <span class="token literal-property property">loaders</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'css-loader'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token comment">// ... 其它配置项</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><ul><li>2、优化用户体验</li></ul> <p>   1)、使用自动刷新</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token literal-property property">文件监听</span><span class="token operator">:</span>在发现源码文件发生变化时，自动重新构建出新的输出文件。是 webpack 模块提供的。
+    文件监听原理：Webpack 中监听一个文件发生变化的原理是定时的去获取这个文件的最后编辑时间，每次都存下最新的最后编辑时间，如果发现当前获取的和最后一次保存的最后编辑时间不一致，就认为该文件发生了变化。
+    自动刷新的原理：webpack 模块负责监听文件，webpack<span class="token operator">-</span>dev<span class="token operator">-</span>server 模块则负责刷新浏览器。 在使用 webpack<span class="token operator">-</span>dev<span class="token operator">-</span>server 模块去启动 webpack 模块时，webpack 模块的监听模式默认会被开启。
+    控制浏览器刷新有三种方法：
+    <span class="token number">1</span>、借助浏览器扩展去通过浏览器提供的接口刷新，WebStorm <span class="token constant">IDE</span> 的 LiveEdit 功能就是这样实现的。
+    <span class="token number">2</span><span class="token function">、往要开发的网页中注入代理客户端代码，通过代理客户端去刷新整个页面。</span><span class="token punctuation">(</span>DevServer默认采用的，为输出的每个chunk注入代理客户端，是通过inline属性来控制的。<span class="token punctuation">)</span>
+    <span class="token number">3</span>、把要开发的网页装进一个 iframe 中，通过刷新 iframe 去看到最新效果。
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 只有在开启监听模式时，watchOptions 才有意义</span>
+      <span class="token comment">// 默认为 false，也就是不开启</span>
+      <span class="token literal-property property">watch</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token comment">// 监听模式运行时的参数</span>
+      <span class="token comment">// 在开启监听模式时，才有意义</span>
+      <span class="token literal-property property">watchOptions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 不监听的文件或文件夹，支持正则匹配</span>
+        <span class="token comment">// 默认为空</span>
+        <span class="token literal-property property">ignored</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token comment">// 监听到变化发生后会等300ms再去执行动作，防止文件更新太快导致重新编译频率太高</span>
+        <span class="token comment">// 默认为 300ms</span>
+        <span class="token comment">//值越大性能越好，因为这能降低重新构建的频率。</span>
+        <span class="token literal-property property">aggregateTimeout</span><span class="token operator">:</span> <span class="token number">300</span><span class="token punctuation">,</span>
+        <span class="token comment">// 判断文件是否发生变化是通过不停的去询问系统指定文件有没有变化实现的</span>
+        <span class="token comment">// 默认每隔1000毫秒询问一次</span>
+        <span class="token comment">//值越大越好，因为这能降低检查的频率。</span>
+        <span class="token literal-property property">poll</span><span class="token operator">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>   2)、开启模块热加载</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token literal-property property">模块热加载原理</span><span class="token operator">:</span>当一个源码发生变化时，只重新编译发生变化的模块，再用新输出的模块替换掉浏览器中对应的老模块。
+    优点：
+    <span class="token number">1</span>、实时预览反应更快，等待时间更短。
+    <span class="token number">2</span>、不刷新浏览器，而且能保留当前网页的运行状态。
+    module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">devServer</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">hot</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    当子模块发生更新时，更新事件会一层层往上传递，直到有某层的文件接受了当前变化的模块，如果事件一直往上抛到最外层都没有文件接受它，就会直接刷新网页。
+    优化模块热更新：在main<span class="token punctuation">.</span>js中注入如下代码。
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>module<span class="token punctuation">.</span>hot<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        module<span class="token punctuation">.</span>hot<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'./AppComponent'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//'./AppComponent':表示监听的模块；callback表示回调。</span>
+    <span class="token punctuation">}</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">// 显示出被替换模块的名称</span>
+        <span class="token keyword">new</span> <span class="token class-name">NamedModulesPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    注意：
+    <span class="token number">1</span>、关闭默认的 inline 模式手动注入代理客户端的优化方法不能用于在使用模块热替换的情况下。
+    <span class="token number">2</span>、监听更少的文件，忽略掉 node_modules 目录下的文件。 
+</code></pre></div><p><strong>4.2 生产环境下的优化</strong></p> <ul><li>1、缩短首屏加载时间</li></ul> <p>   1)、区分环境<br>
+   2)、压缩代码</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    <span class="token number">1</span>、这里压缩的是<span class="token constant">ES6</span>代码。
+    <span class="token keyword">const</span> UglifyESPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'uglifyjs-webpack-plugin'</span><span class="token punctuation">)</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token keyword">new</span> <span class="token class-name">UglifyESPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          <span class="token comment">// 多嵌套了一层，用于压缩ES6代码</span>
+          <span class="token literal-property property">uglifyOptions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">compress</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token comment">// 在UglifyJs删除没有用到的代码时不输出警告</span>
+              <span class="token literal-property property">warnings</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+              <span class="token comment">// 删除所有的 `console` 语句，可以兼容ie浏览器</span>
+              <span class="token literal-property property">drop_console</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+              <span class="token comment">// 内嵌定义了但是只用到一次的变量</span>
+              <span class="token literal-property property">collapse_vars</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+              <span class="token comment">// 提取出出现多次但是没有定义成变量去引用的静态值</span>
+              <span class="token literal-property property">reduce_vars</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+              <span class="token comment">// 最紧凑的输出</span>
+              <span class="token literal-property property">beautify</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+              <span class="token comment">// 删除所有的注释</span>
+              <span class="token literal-property property">comments</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token number">2</span>、压缩css代码
+    <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> ExtractTextPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'extract-text-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span><span class="token comment">// 增加对 CSS 文件的支持</span>
+            <span class="token comment">// 提取出 Chunk 中的 CSS 代码到单独的文件中</span>
+            <span class="token literal-property property">use</span><span class="token operator">:</span> ExtractTextPlugin<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              <span class="token comment">// 通过 minimize 选项压缩 CSS 代码</span>
+              <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'css-loader?minimize'</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token keyword">new</span> <span class="token class-name">ExtractTextPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[name]_[contenthash:8].css</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span><span class="token comment">// 给输出的 CSS 文件名称加上 Hash 值</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>   3)、使用CDN进行加速<br></p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>        <span class="token constant">CDN</span> 又叫内容分发网络，通过把资源部署到世界各地，用户在访问时按照就近原则从离用户最近的服务器获取资源，从而加速资源的获取速度。
+        
+        使用<span class="token constant">CDN</span>要注意的问题：
+        <span class="token number">1</span>、针对 <span class="token constant">HTML</span> 文件：不开启缓存，把 <span class="token constant">HTML</span> 放到自己的服务器上，而不是 <span class="token constant">CDN</span> 服务上，同时关闭自己服务器上的缓存。
+        <span class="token number">2</span>、针对静态的 JavaScript、<span class="token constant">CSS</span>、图片等文件：开启 <span class="token constant">CDN</span> 和缓存，上传到 <span class="token constant">CDN</span> 服务上去，同时给每个文件名带上由文件内容算出的 Hash 值。带上 Hash 值的原因是文件名会随着文件内容而变化，只要文件发生变化其对应的 <span class="token constant">URL</span> 就会变化，它就会被重新下载，无论缓存时间有多长。
+        
+        Webpack 实现 <span class="token constant">CDN</span> 的接入要注意一下几点：
+        <span class="token number">1</span>、静态资源的导入 <span class="token constant">URL</span> 需要变成指向 <span class="token constant">CDN</span> 服务的绝对路径的 <span class="token constant">URL</span> 而不是相对于 <span class="token constant">HTML</span> 文件的 <span class="token constant">URL</span>。
+        <span class="token number">2</span>、静态资源的文件名称需要带上有文件内容算出来的 Hash 值，以防止被缓存。
+        <span class="token number">3</span>、不同类型的资源放到不同域名的 <span class="token constant">CDN</span> 服务上去，以防止资源的并行加载被阻塞。
+        
+        在webpack中的基本配置如下：
+        <span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> ExtractTextPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'extract-text-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> htmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+          <span class="token comment">// 省略 entry 配置...</span>
+          <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 给输出的 JavaScript 文件名称加上 Hash 值</span>
+            <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'[name]_[chunkhash:8].js'</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">path</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token comment">// 指定存放 JavaScript 文件的 CDN 目录 URL</span>
+            <span class="token literal-property property">publicPath</span><span class="token operator">:</span> <span class="token string">'//js.cdn.com/id/'</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+              <span class="token punctuation">{</span>
+                <span class="token comment">// 增加对 CSS 文件的支持</span>
+                <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+                <span class="token comment">// 提取出 Chunk 中的 CSS 代码到单独的文件中</span>
+                <span class="token literal-property property">use</span><span class="token operator">:</span> ExtractTextPlugin<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                  <span class="token comment">// 压缩 CSS 代码</span>
+                  <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'css-loader?minimize'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  <span class="token comment">// 指定存放 CSS 中导入的资源（例如图片）的 CDN 目录 URL</span>
+                  <span class="token literal-property property">publicPath</span><span class="token operator">:</span> <span class="token string">'//img.cdn.com/id/'</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+              <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token comment">// 使用 WebPlugin 自动生成 HTML</span>
+            <span class="token keyword">new</span> <span class="token class-name">htmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              <span class="token comment">// HTML 模版文件所在的文件路径</span>
+              <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'./template.html'</span><span class="token punctuation">,</span>
+              <span class="token comment">// 输出的 HTML 的文件名称</span>
+              <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'index.html'</span><span class="token punctuation">,</span>
+              <span class="token comment">// 指定存放 CSS 文件的 CDN 目录 URL</span>
+              <span class="token literal-property property">stylePublicPath</span><span class="token operator">:</span> <span class="token string">'//css.cdn.com/id/'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token keyword">new</span> <span class="token class-name">ExtractTextPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              <span class="token comment">// 给输出的 CSS 文件名称加上 Hash 值</span>
+              <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[name]_[contenthash:8].css</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token comment">// 省略代码压缩插件配置...</span>
+          <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>   4)、使用Tree-Shaking删除无用的代码</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    Tree Shaking 可以用来剔除 JavaScript 中用不上的死代码。它依赖静态的 <span class="token constant">ES6</span> 模块化语法。
+    
+    Tree Shaking的局限性在于：
+    <span class="token number">1</span>、不会对entry入口文件做 Tree Shaking。
+    <span class="token number">2</span>、不会对异步分割出去的代码做 Tree Shaking。
+    
+    想要是Tree Shaking起作用，需要做到这几步。
+    <span class="token number">1</span>、修改<span class="token punctuation">.</span>babelrc 文件
+    <span class="token punctuation">{</span>
+      <span class="token string-property property">&quot;presets&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">[</span>
+          <span class="token string">&quot;env&quot;</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span>
+            <span class="token string-property property">&quot;modules&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token number">2</span><span class="token function">、使用代码压缩</span><span class="token punctuation">(</span>在命令行中加上<span class="token operator">--</span>optimize<span class="token operator">-</span>minimize<span class="token punctuation">)</span>
+    module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{</span>
+         <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 针对 Npm 中的第三方模块优先采用 jsnext:main 中指向的 ES6 模块化语法的文件（Tree Shaking只对ES6模块化语法的文件起作用，所以需要如下配置。）</span>
+            <span class="token literal-property property">mainFields</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'jsnext:main'</span><span class="token punctuation">,</span> <span class="token string">'browser'</span><span class="token punctuation">,</span> <span class="token string">'main'</span><span class="token punctuation">]</span>
+         <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">plugins</span><span class="token operator">:</span><span class="token punctuation">[</span>
+            <span class="token keyword">new</span> <span class="token class-name">UglifyJSPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>   5)、进行按需加载（使用import()）<br>
+   6)、提取公共代码</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    module<span class="token punctuation">.</span>exports<span class="token operator">=</span><span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+        <span class="token literal-property property">optimization</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">splitChunks</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    	     	<span class="token literal-property property">cacheGroups</span><span class="token operator">:</span><span class="token punctuation">{</span> 					<span class="token comment">// 这里开始设置缓存的</span>
+    	         	<span class="token literal-property property">vendor</span><span class="token operator">:</span> <span class="token punctuation">{</span> 					<span class="token comment">// key 为entry中定义的 入口名称</span>
+    	         		<span class="token literal-property property">priority</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> 			<span class="token comment">// 缓存组优先级</span>
+    	             	<span class="token literal-property property">chunks</span><span class="token operator">:</span> <span class="token string">&quot;all&quot;</span><span class="token punctuation">,</span>
+    	             	<span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]babel-runtime</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    	             	<span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'babel-runtime'</span><span class="token punctuation">,</span>
+    	         	<span class="token punctuation">}</span>
+    	     	<span class="token punctuation">}</span>
+    		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><ul><li>2、提升代码性能（流畅度）</li></ul> <p>   1)、开启 Scope Hoisting（减少函数声明语句）</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>    Scope Hoisting 可以让 Webpack 打包出来的代码文件更小、运行的更快， 它又译作 <span class="token string">&quot;作用域提升&quot;</span>。Scope Hoisting 的实现原理其实很简单：分析出模块之间的依赖关系，尽可能的把打散的模块合并到一个函数中去，但前提是不能造成代码冗余。 因此只有那些被引用了一次的模块才能被合并。因此源码必须采用 <span class="token constant">ES6</span> 模块化语句，不然它将无法生效。 
+    
+    使用Scope Hoisting的好处：
+    <span class="token number">1</span>、代码体积更小，因为函数声明语句会产生大量代码；
+    <span class="token number">2</span>、代码在运行时因为创建的函数作用域更少了，内存开销也随之变小。
+    
+    <span class="token keyword">const</span> ModuleConcatenationPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack/lib/optimize/ModuleConcatenationPlugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 针对 Npm 中的第三方模块优先采用 jsnext:main 中指向的 ES6 模块化语法的文件</span>
+        <span class="token literal-property property">mainFields</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'jsnext:main'</span><span class="token punctuation">,</span> <span class="token string">'browser'</span><span class="token punctuation">,</span> <span class="token string">'main'</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">// 开启 Scope Hoisting</span>
+        <span class="token keyword">new</span> <span class="token class-name">ModuleConcatenationPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    
+</code></pre></div><p>  这片文档主要是对webpack的配置及优化做了一些总结。资料来源主要是 <code>《升入浅出webpack》</code>和 <code>webpack</code> 的官网。</p></image></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">9/24/2024, 6:06:00 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/articles/webpack/webpack工作流程总结.html" class="prev">
+        webpack工作流程总结
+      </a></span> <span class="next"><a href="/blog/articles/webpack/webpack的Loader机制.html">
+        webpack的Loader机制
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.cc3037ec.js" defer></script><script src="/blog/assets/js/2.918eef7d.js" defer></script><script src="/blog/assets/js/1.dd66940c.js" defer></script><script src="/blog/assets/js/253.ff32fe13.js" defer></script>
+  </body>
+</html>
